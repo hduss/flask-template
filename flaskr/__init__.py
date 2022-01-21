@@ -27,8 +27,10 @@ def create_app(test_config=None):
     from . import admin
     from . import front
     from . import db
+    from . import command
 
     db.init_app(app)
+    command.init_user(app, db)
 
     app.register_blueprint(admin.bp)
     app.register_blueprint(front.bp)

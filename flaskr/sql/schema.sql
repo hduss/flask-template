@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS post;
 
-CREATE TABLE user (
+CREATE TABLE admin_user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT UNIQUE NOT NULL,
+  email TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL
 );
 
@@ -17,4 +17,4 @@ CREATE TABLE post (
 );
 
 
-INSERT INTO user(username, password) VALUES('test@test.com', 'root')
+INSERT INTO admin_user(email, password) VALUES('test@test.com', 'root')
