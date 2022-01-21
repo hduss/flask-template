@@ -1,12 +1,14 @@
+import flaskr.functions.login_admin as login_admin
+
 from flask import Flask
 from flask import request
 from flask import render_template
-# from functions.login_admin import login
-# import functions.login_admin as admin_login
-import flaskr.functions.login_admin as login_admin
+from flask import flash
+from flask import session
 from markupsafe import escape
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 @app.route("/")
@@ -21,9 +23,6 @@ def products():
 
 @app.route("/contact", methods=['GET', 'POST'])
 def contact():
-    var = 'je suis une phrase'
-    my_list = ['jean', 'david', 'emily']
-
     contact_select = {
         'probleme': 'problème sur le site',
         'rendez-vous': 'Je souhaite prendre rendez-vous',
@@ -46,18 +45,22 @@ def login():
 
 @app.route("/admin", methods=['GET', 'POST'])
 def admin():
+    error = None
     if request.method == 'POST':
         # functions.login_admin(request)
         # return login_admin.login(request)
 
         if login_admin.login(request):
-            return 'je suis VALID'
+            flash('Mauvais identifiants')
         else:
+            flash('Mauvais identifiants', 'error')
             error = 'Mauvais identifiants'
-            return render_template('admin/admin.html', error=error)
+            # return render_template('admin/admin.html', error=error)
 
-    return render_template('admin/admin.html')
+    return render_template('admin/admin.html', error=error)
 
+
+@app.route('/admin/')
 
 # @app.route('/<name>')
 # def error(name):
