@@ -1,1 +1,2 @@
-print('hello world init')
+
+print('Add database init here')
