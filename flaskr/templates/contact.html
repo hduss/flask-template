@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block head %}
+
+    <link rel="stylesheet" href="static/css/index.css" />
+    <title>Acceuil</title>
+
+{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        <div>
+            <label for="email">Adresse mail</label>
+            <input name="email" id="email" type="email">
+        </div>
+        <div>
+            <label for="motif">Motif</label>
+            <select name="motif" id="motif" required>
+                <option value="">--Veuillez sélectionner un motif--</option>
+                {% for key, value in contact_select.items() %}
+                    <option value="{{key}}">{{value}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="content">Détail</label>
+            <textarea name="content" id="content" rows="5" cols="33"></textarea>
+        </div>
+        <div>
+            <input name="submit" id="submit" type="submit">
+        </div>
+    </form>
+
+{% endblock %}
+
+
+
+
