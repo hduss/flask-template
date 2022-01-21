@@ -38,4 +38,6 @@ def index():
 
 @bp.route('login')
 def login():
+
+
     return render_template('admin/admin.html')
