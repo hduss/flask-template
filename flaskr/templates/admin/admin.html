@@ -6,5 +6,23 @@
 </head>
 <body>
 
+    <form method="post">
+        <div>
+            <label for="email">Adresse mail</label>
+            <input name="email" id="email" type="email">
+        </div>
+
+            <label for="password">Détail</label>
+            <input name="password" id="password" type="password">
+        </div>
+        <div>
+            <input name="submit" id="submit" type="submit">
+        </div>
+
+        {% if error %}
+            <p>{{error}}</p>
+        {% endif %}
+    </form>
+
 </body>
 </html>

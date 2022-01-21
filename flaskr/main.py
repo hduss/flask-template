@@ -1,6 +1,9 @@
 from flask import Flask
 from flask import request
 from flask import render_template
+# from functions.login_admin import login
+# import functions.login_admin as admin_login
+import flaskr.functions.login_admin as login_admin
 from markupsafe import escape
 
 app = Flask(__name__)
@@ -41,16 +44,25 @@ def login():
         # return show_the_login_form()
 
 
-@app.route('/<name>')
-def error(name):
-    render_template('error.html')
-
-
 @app.route("/admin", methods=['GET', 'POST'])
 def admin():
     if request.method == 'POST':
-        print('je suis ok')
+        # functions.login_admin(request)
+        # return login_admin.login(request)
+
+        if login_admin.login(request):
+            return 'je suis VALID'
+        else:
+            error = 'Mauvais identifiants'
+            return render_template('admin/admin.html', error=error)
+
     return render_template('admin/admin.html')
+
+
+# @app.route('/<name>')
+# def error(name):
+#     render_template('error.html')
+#
 
 
 @app.route('/account/<id>')
