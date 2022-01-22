@@ -16,5 +16,3 @@ CREATE TABLE post (
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
-
-INSERT INTO admin_user(email, password) VALUES('test@test.com', 'root')

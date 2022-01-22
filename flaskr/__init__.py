@@ -30,7 +30,7 @@ def create_app(test_config=None):
     from . import command
 
     db.init_app(app)
-    command.init_user(app, db)
+    command.init_user(app)
 
     app.register_blueprint(admin.bp)
     app.register_blueprint(front.bp)
