@@ -14,29 +14,26 @@ from .db import get_db
 def init_admin_user(email, password):
 
     click.echo(f'Email: {email}')
-    click.echo(f'Password {password}!')
-    generated_password = generate_password_hash(password)
-    print(f'Password => {password}')
+    click.echo(f'Password: {password}!')
 
+    insert = None
+    generated_password = generate_password_hash(password)
     db = get_db()
+    cursor = db.cursor()
+
     request = 'INSERT INTO admin_user(email, password) VALUES(?, ?);'
     params = (email, generated_password)
 
-    # print(db.execute(request, params).fetchone())
     try:
-        db.execute(request, params).fetchone()
+        insert = db.execute(request, params).fetchone()
         db.commit()
+        db.close()
     except sqlite3.Error as err:
-        print(f'sqlite error: {err}')
+        print(f'\nsqlite error: {err}')
         print(f'User {email} is already registered')
 
 
-
-
-
 def init_user(app):
-
     # password = generate_password_hash()
 
     app.cli.add_command(init_admin_user)
-

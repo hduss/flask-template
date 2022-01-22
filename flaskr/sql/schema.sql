@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS admin_user;
 DROP TABLE IF EXISTS post;
 
 CREATE TABLE admin_user (
