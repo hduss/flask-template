@@ -17,9 +17,9 @@ def index():
     return render_template('index.html')
 
 
-@bp.route("/products")
-def products():
-    return "<p>Ici liste des produits</p>"
+@bp.route("/services")
+def services():
+    return render_template(url_for())
 
 
 @bp.route("/contact", methods=['GET', 'POST'])
@@ -36,10 +36,20 @@ def contact():
     return render_template('contact.html', contact_select=contact_select)
 
 
-@bp.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        return do_the_login()
-    else:
-        return "<p>Page login ici</p>"
-        # return show_the_login_form()
+@bp.route('/find')
+def find():
+    return render_template('front/find.html')
+
+
+@bp.route('/<not_founded>')
+def error(not_founded):
+    print(f'Error page => {not_founded}')
+    return render_template('404.html')
+
+# @bp.route('/login', methods=['GET', 'POST'])
+# def login():
+#     if request.method == 'POST':
+#         return do_the_login()
+#     else:
+#         return "<p>Page login ici</p>"
+#         # return show_the_login_form()

@@ -1,6 +1,41 @@
-.main-container{
-    width: 85%;
+#main-container{
+    /*width: 85%;*/
     margin-left: auto;
     margin-right: auto;
-    background-color: #f0faff;
+    background-color: #fcfeff;
+    /*padding-top: 25px;*/
 }
+
+#menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    background-color: gray;
+}
+
+#menu div{
+    margin-right: 15px;
+    margin-left: 15px;
+    color: white;
+}
+
+#logo_menu{
+    max-width: 110px;
+    height: auto;
+
+}
+
+#title{
+    display: flex;
+    justify-content: center;
+        margin-top: 30px;
+    font-size: 45px;
+}
+
+#footer{
+    height: 200px;
+    background-color: darkslategray;
+    bottom: 0;
+}
+

@@ -3,6 +3,7 @@
 <head>
 
     <link rel="stylesheet" href="static/css/styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
     {% block head %}
     <link rel="stylesheet" href="style.css" />
@@ -11,9 +12,12 @@
 
 </head>
 
-<body class="main-container">
+<body id="main-container">
 
     {% include "headers/menu.html" %}
+    <div>
+        <img src="static/img/pexels-photo-276724.jpeg">
+    </div>
 
     <div id="content">{% block content %}{% endblock %}</div>
 

@@ -29,12 +29,14 @@ def create_app(test_config=None):
     from . import db
     from . import command
 
+    # Commands line
     db.init_app(app)
     command.init_user(app)
 
+    # Blueprints
     app.register_blueprint(admin.bp)
     app.register_blueprint(front.bp)
 
-    app.jinja_env.globals.update(logout_admin=admin.logout)
+    # app.jinja_env.globals.update(logout_admin=admin.logout)
 
     return app
